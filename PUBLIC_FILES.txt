@@ -1,0 +1,13 @@
+.gitattributes
+.gitignore
+CHANGELOG.md
+LICENSE
+PUBLIC_FILES.txt
+README.md
+VERSION
+docs/VALIDACAO.md
+jogar.sh
+settings.toml
+source/run.py
+tools/instalar.py
+tools/publicar_pacote.py

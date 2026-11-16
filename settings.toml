@@ -1,0 +1,14 @@
+[video]
+fullscreen = true
+window_width = 1920
+window_height = 1080
+vsync = false
+frame_rate = "60"
+internal_resolution = "1.5x"
+aspect_ratio = "auto"
+smooth_motion = false
+
+[input]
+stick_deadzone = 0.08
+trigger_deadzone = 0.02
+vibration = true
