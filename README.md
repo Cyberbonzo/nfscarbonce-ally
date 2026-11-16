@@ -34,7 +34,9 @@ Adicione `jogar.sh` à biblioteca Steam como jogo externo. Deixe a compatibilida
 
 ## Imagem e desempenho
 
-Configuração inicial: tela cheia e renderização interna **1920×1080** (1.5x), limite de **60 FPS**, V-Sync interno desativado. No Ally testado, com limite de 60 FPS do Steam, o V-Sync interno fazia a apresentação cair para 30 apesar de o port registrar 60; desativá-lo recuperou os 60 FPS observados na corrida. A imagem mantém a proporção 16:9. Vídeos podem rodar a 30 FPS. A primeira passagem por uma cena pode preparar shaders; a campanha inteira não foi medida. A resolução pode ser alterada nas configurações do port.
+Configuração inicial: tela cheia e renderização interna **1920×1080** (1.5x), limite de **60 FPS**, V-Sync interno desativado. O launcher define `NFSMW_PRESENT_HOLD=0`: o port apresenta os quadros assim que ficam prontos, evitando a retenção adaptativa que fazia a apresentação cair para 30 FPS na tela de 120 Hz do Ally, mesmo com o log interno indicando 60. Desligar apenas o V-Sync não resolveu; a opção de apresentação foi aplicada e testada após reiniciar. O usuário confirmou 60 FPS mantidos em corrida.
+
+A imagem mantém a proporção 16:9. Vídeos podem rodar a 30 FPS. A primeira passagem por uma cena pode preparar shaders; a campanha inteira não foi medida. A resolução pode ser alterada nas configurações do port. Para testar o comportamento original em outro hardware, defina `NFSMW_PRESENT_HOLD=1` no ambiente antes de iniciar.
 
 ## Saves
 

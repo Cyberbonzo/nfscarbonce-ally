@@ -2,7 +2,7 @@
 """Launch SpeedBreaker Carbon and back up its private portable saves."""
 from pathlib import Path
 from datetime import datetime
-import subprocess, sys, zipfile
+import os, subprocess, sys, zipfile
 
 root = Path(__file__).resolve().parents[1]
 runtime = root / 'SpeedBreaker-Carbon'
@@ -22,9 +22,12 @@ def backup():
             archive.write(path, path.relative_to(userdata))
 
 backup()
+env = os.environ.copy()
+# Avoid adaptive presentation holds at 120 Hz under gamescope.
+env.setdefault('NFSMW_PRESENT_HOLD', '0')
 with (root / 'logs/session.log').open('a') as log:
     log.write('\nSession ' + datetime.now().isoformat() + '\n'); log.flush()
     result = subprocess.run([str(runtime / 'speedbreaker.sh'), *sys.argv[1:]],
-                            cwd=runtime, stdout=log, stderr=subprocess.STDOUT)
+                            cwd=runtime, env=env, stdout=log, stderr=subprocess.STDOUT)
 backup()
 raise SystemExit(result.returncode)
